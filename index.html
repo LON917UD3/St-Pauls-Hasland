@@ -178,20 +178,6 @@ width:100%;
 text-align:center;
 }
 
-.logo-main{
-font-family:'Playfair Display',serif;
-font-size:1.125rem;
-font-weight:bold;
-letter-spacing:.05em;
-line-height:1.1;
-}
-
-.logo-sub{
-font-size:.625rem;
-letter-spacing:.08em;
-text-transform:uppercase;
-line-height:1.1;
-}
 
         .logo-main {
             font-family: 'Playfair Display', serif;
@@ -209,14 +195,34 @@ line-height:1.1;
             color: var(--burgundy);
         }
 
-      .logo-sub {
-    font-size: 0.625rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
-    width: 100%;
-    text-align: center;
+     .logo-text,
+.logo-main,
+.logo-sub{
+    display:block;
+    text-align:center;
 }
+
+.logo-text{
+    width:110px;
+}
+
+.logo-main{
+    font-family:'Playfair Display',serif;
+    font-size:1.125rem;
+    font-weight:bold;
+    letter-spacing:.05em;
+    line-height:1.1;
+    transition:color .3s ease;
+}
+
+.logo-sub{
+    font-size:.625rem;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    line-height:1.1;
+    transition:color .3s ease;
+}
+
 
         header.at-top .logo-sub {
             color: rgba(255, 255, 255, 0.7);
