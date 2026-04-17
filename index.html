@@ -161,27 +161,39 @@
     width: auto;
     display: block;
 }
-
-      .logo-text{
+.logo-text{
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
 text-align:center;
-width:108px;
+width:96px;
 }
 
-.logo-main,
+.logo-main{
+font-family:'Playfair Display',serif;
+font-size:1.125rem;
+font-weight:bold;
+letter-spacing:.05em;
+line-height:1.1;
+width:100%;
+text-align:center;
+transition:color .3s ease;
+}
+
+.logo-sub{
+font-size:.54rem;
+letter-spacing:0;
+text-transform:uppercase;
+line-height:1.1;
+width:100%;
+text-align:center;
+white-space:normal;
+transition:color .3s ease;
+}
+      
 
 
-
-        .logo-main {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.125rem;
-            font-weight: bold;
-            letter-spacing: 0.05em;
-            transition: color 0.3s ease;
-        }
 
         header.at-top .logo-main {
             color: white;
@@ -191,32 +203,7 @@ width:108px;
             color: var(--burgundy);
         }
 
-     .logo-text,
-.logo-main,
-.logo-sub{
-font-size:.625rem;
-letter-spacing:.02em;
-text-transform:uppercase;
-line-height:1.1;
-width:100%;
-text-align:center;
-transition:color .3s ease;
-}
-
-
-.logo-text{
-    width:110px;
-}
-
-.logo-main{
-    font-family:'Playfair Display',serif;
-    font-size:1.125rem;
-    font-weight:bold;
-    letter-spacing:.05em;
-    line-height:1.1;
-    transition:color .3s ease;
-}
-
+     
 
 
         header.at-top .logo-sub {
