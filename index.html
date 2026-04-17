@@ -111,6 +111,16 @@
         header.scrolled .header-top-content a:hover {
             color: var(--burgundy);
         }
+        @media (max-width: 768px) {
+    .header-top-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 0.35rem;
+    }
+}
 
         .header-main {
             display: flex;
@@ -613,8 +623,8 @@
             <div class="container">
                 <div class="header-top-content">
                     <div style="display: flex; gap: 1rem;">
-                        <span>TEL:01246 850210</span>
                         <span>St Paul's Churchside, Hasland, S41 0JX</span>
+                        <span>TEL:01246 850210</span>
                     </div>
                     <div style="display: flex; gap: 1rem;">
                         <a href="https://www.sswsh.com" target="_blank">The Society</a>
@@ -648,7 +658,7 @@
                 </nav>
 
                 <button class="mobile-menu-btn" id="mobile-menu-btn" onclick="toggleMobileMenu()">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                    <svg xmlns="images/logo.svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
                 </button>
             </div>
         </div>
