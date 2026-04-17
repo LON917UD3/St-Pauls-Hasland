@@ -47,8 +47,7 @@
         }
 
         /* Header Styles */
-        .logo-text{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-width:140px}.logo-main,.logo-sub{width:100%;text-align:center}.logo-sub{letter-spacing:.12em}
-        header {
+         header {
             position: fixed;
             top: 0;
             left: 0;
@@ -163,11 +162,36 @@
     display: block;
 }
 
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
+      .logo-text{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+width:140px;
+}
+
+.logo-main,
+.logo-sub{
+display:block;
+width:100%;
+text-align:center;
+}
+
+.logo-main{
+font-family:'Playfair Display',serif;
+font-size:1.125rem;
+font-weight:bold;
+letter-spacing:.05em;
+line-height:1.1;
+}
+
+.logo-sub{
+font-size:.625rem;
+letter-spacing:.08em;
+text-transform:uppercase;
+line-height:1.1;
+}
 
         .logo-main {
             font-family: 'Playfair Display', serif;
