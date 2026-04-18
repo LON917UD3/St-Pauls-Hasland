@@ -1,1607 +1,447 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>St Paul's Hasland - Church of England</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --burgundy: rgb(134, 14, 36);
-            --burgundy-soft: rgba(134, 14, 36, 0.08);
-            --burgundy-mid: rgba(134, 14, 36, 0.72);
-
-            --gold: #C89A2B;
-            --oak: #4A3427;
-            --cream: #F7F4F1;
-            --white: #FFFFFF;
-
-            --foreground: #4A3427;
-            --muted: rgba(74, 52, 39, 0.78);
-            --muted-light: rgba(74, 52, 39, 0.62);
-            --border: rgba(74, 52, 39, 0.10);
-
-            --nave: #2C3E50;
-            --shadow-soft: 0 2px 10px rgba(0, 0, 0, 0.06);
-            --shadow-card: 0 10px 26px rgba(0, 0, 0, 0.12);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Source Sans 3', system-ui, sans-serif;
-            background: var(--cream);
-            color: var(--foreground);
-            line-height: 1.6;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        a {
-            color: inherit;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .narrow-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .welcome-wrap {
-            max-width: 1120px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .bg-cream {
-            background: var(--cream);
-        }
-
-        .bg-white {
-            background: var(--white);
-        }
-
-        section {
-            padding: 4rem 0;
-            scroll-margin-top: 80px;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            color: var(--oak);
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            margin-bottom: 0.75rem;
-        }
-
-        h1 {
-            font-size: clamp(2.75rem, 4.4vw, 4.1rem);
-            line-height: 1.04;
-            letter-spacing: -0.03em;
-        }
-
-        h2 {
-            font-size: clamp(2.15rem, 3.4vw, 3.05rem);
-            line-height: 1.07;
-            letter-spacing: -0.025em;
-        }
-
-        h3 {
-            font-size: clamp(1.65rem, 2.4vw, 2.1rem);
-            font-weight: 500;
-            line-height: 1.12;
-            letter-spacing: -0.015em;
-        }
-
-        h4 {
-            font-size: clamp(1.28rem, 1.8vw, 1.55rem);
-            font-weight: 600;
-            line-height: 1.18;
-            letter-spacing: -0.01em;
-        }
-
-        h5 {
-            font-size: 1.05rem;
-            font-weight: 600;
-            line-height: 1.25;
-            letter-spacing: 0.02em;
-        }
-
-        h6 {
-            font-size: 0.92rem;
-            font-weight: 700;
-            line-height: 1.25;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        p {
-            color: var(--muted);
-        }
-
-        .section-label {
-            font-size: 0.82rem;
-            letter-spacing: 0.34em;
-            text-transform: uppercase;
-            color: var(--burgundy);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1;
-        }
-
-        .arch-divider,
-        .welcome-divider {
-            position: relative;
-            height: 2px;
-            max-width: 680px;
-            margin: 2rem auto 2.75rem auto;
-            background: linear-gradient(to right, transparent, rgba(200, 154, 43, 0.9), transparent);
-        }
-
-        .arch-divider::before,
-        .welcome-divider::before {
-            content: "✠";
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            padding: 0 0.9rem;
-            background: var(--cream);
-            color: var(--gold);
-            font-size: 1.18rem;
-            font-weight: 700;
-            line-height: 1;
-        }
-
-        .grid {
-            display: grid;
-            gap: 2rem;
-        }
-
-        .grid-2 {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .grid-3 {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-
-        .grid-4 {
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-        }
-
-        .card {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 4px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow-soft);
-            transition: box-shadow .3s ease, transform .3s ease;
-        }
-
-        .card:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10);
-            transform: translateY(-2px);
-        }
-
-        .card-icon {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 4px;
-            background: #f5f3f0;
-            margin-bottom: 1rem;
-        }
-
-        .card-icon svg {
-            width: 24px;
-            height: 24px;
-            stroke: var(--burgundy);
-            stroke-width: 2;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 2rem;
-            background: var(--burgundy);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            border: none;
-            cursor: pointer;
-            transition: background .3s ease;
-        }
-
-        .btn:hover {
-            background: rgb(110, 10, 29);
-        }
-
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity .7s ease-out, transform .7s ease-out;
-        }
-
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 50;
-            transition: all .45s ease;
-        }
-
-        header.at-top {
-            background: transparent;
-        }
-
-        header.scrolled {
-            background: rgba(255, 255, 255, .96);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, .08);
-        }
-
-        .header-top {
-            background: transparent;
-            transition: all .45s ease;
-            overflow: hidden;
-            max-height: 100px;
-            opacity: 1;
-            padding: .5rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, .12);
-        }
-
-        header.scrolled .header-top {
-            max-height: 0;
-            opacity: 0;
-            padding: 0;
-            border-bottom-color: transparent;
-        }
-
-        .header-top-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: .75rem;
-            letter-spacing: .05em;
-            text-transform: uppercase;
-            gap: 1rem;
-        }
-
-        header.at-top .header-top-content {
-            color: rgba(255, 255, 255, .82);
-        }
-
-        header.scrolled .header-top-content {
-            color: var(--foreground);
-        }
-
-        .header-top-content a {
-            text-decoration: none;
-            transition: color .3s ease;
-        }
-
-        header.at-top .header-top-content a:hover {
-            color: var(--gold);
-        }
-
-        header.scrolled .header-top-content a:hover {
-            color: var(--burgundy);
-        }
-
-        .header-main {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: .75rem 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: .8rem;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .logo-icon {
-            width: 52px;
-            height: 52px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 4px;
-            transition: background-color .3s ease;
-            flex-shrink: 0;
-        }
-
-        header.at-top .logo-icon {
-            background: rgba(255, 255, 255, .2);
-            backdrop-filter: blur(10px);
-        }
-
-        header.scrolled .logo-icon {
-            background: var(--burgundy);
-        }
-
-        .logo-image {
-            height: 30px;
-            width: auto;
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            text-align: left;
-            gap: 0.15rem;
-        }
-
-        .logo-main {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 2rem;
-            font-weight: 600;
-            letter-spacing: 0;
-            line-height: 0.95;
-            transition: color .3s ease;
-        }
-
-        .logo-sub {
-            font-family: 'Source Sans 3', system-ui, sans-serif;
-            font-size: 0.68rem;
-            font-weight: 600;
-            letter-spacing: 0.28em;
-            text-transform: uppercase;
-            line-height: 1;
-            white-space: nowrap;
-            transition: color .3s ease;
-        }
-
-        header.at-top .logo-main,
-        header.at-top .logo-sub {
-            color: #fff;
-        }
-
-        header.scrolled .logo-main {
-            color: var(--burgundy);
-        }
-
-        header.scrolled .logo-sub {
-            color: var(--muted-light);
-        }
-
-        nav {
-            display: none;
-            gap: .25rem;
-        }
-
-        @media (min-width: 1024px) {
-            nav {
-                display: flex;
-            }
-        }
-
-        .nav-link {
-            position: relative;
-            padding: .5rem .75rem;
-            font-size: .875rem;
-            font-weight: 600;
-            letter-spacing: .05em;
-            text-transform: uppercase;
-            text-decoration: none;
-            transition: color .3s ease;
-        }
-
-        header.at-top .nav-link {
-            color: rgba(255, 255, 255, .84);
-        }
-
-        header.scrolled .nav-link {
-            color: rgba(61, 40, 23, .74);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: .75rem;
-            right: .75rem;
-            height: 3px;
-            background-color: var(--burgundy);
-            border-radius: 2px;
-            opacity: 0;
-            transition: opacity .3s ease;
-        }
-
-        .nav-link.active::after {
-            opacity: 1;
-        }
-
-        header.at-top .nav-link:hover {
-            color: #fff;
-        }
-
-        header.scrolled .nav-link:hover {
-            color: var(--burgundy);
-        }
-
-        .mobile-menu-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        @media (min-width: 1024px) {
-            .mobile-menu-btn {
-                display: none;
-            }
-        }
-
-        header.at-top .mobile-menu-btn {
-            color: #fff;
-        }
-
-        header.scrolled .mobile-menu-btn {
-            color: var(--foreground);
-        }
-
-        .mobile-menu-btn svg {
-            width: 24px;
-            height: 24px;
-            stroke: currentColor;
-            stroke-width: 2;
-        }
-
-        .mobile-nav {
-            display: block;
-            background: #fff;
-            border-top: 1px solid #ddd;
-            overflow: hidden;
-            max-height: 0;
-            transition: max-height .3s ease;
-        }
-
-        .mobile-nav.open {
-            max-height: 600px;
-        }
-
-        .mobile-nav a {
-            display: block;
-            padding: .75rem 1rem;
-            font-size: .875rem;
-            font-weight: 600;
-            letter-spacing: .05em;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: rgba(61, 40, 23, .7);
-            transition: all .3s ease;
-            border-left: 3px solid transparent;
-        }
-
-        .mobile-nav a:hover,
-        .mobile-nav a.active {
-            background: var(--burgundy-soft);
-            color: var(--burgundy);
-            border-left-color: var(--burgundy);
-        }
-
-        /* Hero */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            text-align: center;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, .45);
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            color: #fff;
-            padding: 2rem;
-            max-width: 820px;
-        }
-
-        .hero h1,
-        .hero h2,
-        .hero h3,
-        .hero h4,
-        .hero h5,
-        .hero h6 {
-            color: #fff;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.1rem, 8vw, 4rem);
-            line-height: 1.08;
-            letter-spacing: -0.02em;
-            margin-bottom: 1.25rem;
-        }
-
-        .hero p {
-            font-size: clamp(1rem, 3vw, 1.25rem);
-            font-weight: 300;
-            margin-bottom: 1rem;
-            color: rgba(255, 255, 255, .95);
-        }
-
-        .hero blockquote {
-            font-size: 1.125rem;
-            font-style: italic;
-            color: var(--gold);
-            font-family: 'Cormorant Garamond', serif;
-            margin-top: 1.5rem;
-        }
-
-        /* Welcome */
-        .welcome-intro {
-            max-width: 980px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .welcome-intro h1 {
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .welcome-body {
-            max-width: 1040px;
-            margin: 0 auto;
-        }
-
-        .welcome-body p {
-            font-size: 1.08rem;
-            line-height: 1.9;
-            color: rgba(74, 52, 39, .82);
-            margin-bottom: 2rem;
-        }
-
-        .welcome-body .lead {
-            font-size: 1.16rem;
-        }
-
-        .welcome-body .lead::first-letter {
-            float: left;
-            font-family: "Cormorant Garamond", serif;
-            font-size: 5.8rem;
-            line-height: .78;
-            padding-right: .5rem;
-            padding-top: .14rem;
-            color: var(--burgundy);
-            font-weight: 600;
-        }
-
-        .welcome-quote {
-            border-left: 5px solid var(--gold);
-            padding-left: 1.8rem;
-            margin: 2.2rem 0;
-        }
-
-        .welcome-quote blockquote {
-            margin: 0 0 .45rem 0;
-            font-family: "Cormorant Garamond", serif;
-            font-size: 1.28rem;
-            font-style: italic;
-            color: var(--burgundy-mid);
-            line-height: 1.45;
-        }
-
-        .welcome-quote cite {
-            display: block;
-            font-style: normal;
-            font-size: .98rem;
-            color: rgba(74, 52, 39, .48);
-        }
-
-        /* First visit */
-        .first-visit-section {
-            padding: 4rem 0;
-        }
-
-        .first-visit-wrap {
-            max-width: 1080px;
-        }
-
-        .first-visit-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) 430px;
-            gap: 2.25rem;
-            align-items: start;
-        }
-
-        .first-visit-copy {
-            max-width: 620px;
-        }
-
-        .visit-highlight-box {
-            background: #F3EEE8;
-            padding: 1.9rem 1.95rem;
-            margin-bottom: 1.5rem;
-            border-radius: 2px;
-        }
-
-        .visit-highlight-box h3 {
-            color: var(--burgundy);
-            margin-bottom: .55rem;
-        }
-
-        .visit-highlight-box h2 {
-            margin-bottom: .85rem;
-        }
-
-        .visit-highlight-box p,
-        .visit-secondary-copy {
-            font-size: .98rem;
-            line-height: 1.8;
-            color: rgba(74, 52, 39, .78);
-        }
-
-        .first-visit-image-wrap {
-            padding-top: 2.9rem;
-        }
-
-        .first-visit-image {
-            width: 100%;
-            height: 390px;
-            object-fit: cover;
-            border-radius: 2px;
-            box-shadow: var(--shadow-card);
-        }
-
-        /* Service times */
-        .service-times-section {
-            padding: 5.25rem 0 4.25rem;
-        }
-
-        .service-times-wrap {
-            max-width: 1020px;
-        }
-
-        .service-info-list {
-            display: grid;
-            gap: 1.1rem;
-            margin: 1.8rem 0 2.4rem;
-        }
-
-        .service-info-item {
-            display: flex;
-            align-items: center;
-            gap: 1.15rem;
-            background: #fff;
-            border: 1px solid rgba(74, 52, 39, .08);
-            box-shadow: var(--shadow-soft);
-            padding: 1.3rem 1.4rem;
-            border-radius: 2px;
-            font-size: 1.02rem;
-            color: rgba(74, 52, 39, .86);
-        }
-
-        .service-info-mark {
-            color: var(--gold);
-            font-size: .95rem;
-            flex: 0 0 auto;
-            line-height: 1;
-        }
-
-        .service-times-note {
-            max-width: 920px;
-            font-size: 1rem;
-            line-height: 1.85;
-            color: rgba(74, 52, 39, .82);
-            margin: 0 0 2.3rem 0;
-        }
-
-        .service-times-cards {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 1.5rem;
-        }
-
-        .service-time-card {
-            background: #fff;
-            border: 1px solid rgba(74, 52, 39, .08);
-            box-shadow: var(--shadow-soft);
-            padding: 1.85rem;
-            border-radius: 2px;
-        }
-
-        .service-time-day {
-            font-size: .76rem;
-            text-transform: uppercase;
-            letter-spacing: .24em;
-            color: var(--burgundy);
-            font-weight: 700;
-            margin-bottom: .7rem;
-        }
-
-        .service-time-card h3 {
-            margin-bottom: .25rem;
-        }
-
-        .service-time-hour {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.45rem;
-            color: var(--gold);
-            margin-bottom: .9rem;
-            font-weight: 600;
-        }
-
-        .service-time-card p {
-            color: rgba(74, 52, 39, .78);
-            line-height: 1.8;
-        }
-
-        /* Special services */
-        .special-services-section {
-            position: relative;
-            background-image: url('https://d2xsxph8kpxj0f.cloudfront.net/310519663504666328/K6TVs6AiR67xuXnzkJZV9r/hero-interior-ewtoSwZcDKoLt3SAGLhRy2.webp');
-            background-size: cover;
-            background-position: center;
-            padding: 6rem 0;
-            overflow: hidden;
-        }
-
-        .special-services-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(9, 15, 28, .76);
-        }
-
-        .special-services-wrap {
-            position: relative;
-            z-index: 1;
-            max-width: 1020px;
-        }
-
-        .special-label {
-            color: var(--gold);
-        }
-
-        .special-services-section h1,
-        .special-services-section h2,
-        .special-services-section h3,
-        .special-services-section h4,
-        .special-services-section h5,
-        .special-services-section h6 {
-            color: #fff;
-        }
-
-        .special-services-intro {
-            max-width: 980px;
-            color: rgba(255, 255, 255, .82);
-            font-size: 1.04rem;
-            line-height: 1.85;
-            margin-bottom: 2.3rem;
-        }
-
-        .special-service-card {
-            background: rgba(255, 255, 255, .08);
-            border: 1px solid rgba(255, 255, 255, .14);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, .18);
-            backdrop-filter: blur(8px);
-            padding: 1.85rem;
-            border-radius: 2px;
-        }
-
-        .special-service-heading {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            align-items: baseline;
-            margin-bottom: .9rem;
-        }
-
-        .special-service-heading h3 {
-            color: var(--gold);
-            margin-bottom: 0;
-        }
-
-        .special-service-time {
-            color: rgba(255, 255, 255, .72);
-            font-size: 1rem;
-        }
-
-        .special-service-card p {
-            color: rgba(255, 255, 255, .82);
-            line-height: 1.82;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--nave);
-            color: rgba(255, 255, 255, .9);
-            padding: 4rem 0 2rem;
-        }
-
-        footer .footer-grid {
-            display: grid;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, .1);
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        }
-
-        footer h1,
-        footer h2,
-        footer h3,
-        footer h4,
-        footer h5,
-        footer h6 {
-            color: var(--gold);
-        }
-
-        footer .footer-brand {
-            color: #fff;
-            font-size: 1.45rem;
-            letter-spacing: 0;
-            text-transform: none;
-            margin-bottom: .7rem;
-        }
-
-        footer a {
-            color: rgba(255, 255, 255, .72);
-            text-decoration: none;
-            font-size: .875rem;
-            transition: color .3s ease;
-        }
-
-        footer a:hover {
-            color: var(--gold);
-        }
-
-        footer ul {
-            list-style: none;
-        }
-
-        footer li {
-            margin-bottom: .75rem;
-        }
-
-        .footer-bottom {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            text-align: center;
-            font-size: .75rem;
-            color: rgba(255, 255, 255, .5);
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .grid-4 {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .first-visit-grid {
-                grid-template-columns: 1fr 360px;
-                gap: 2rem;
-            }
-
-            .first-visit-image {
-                height: 340px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            section {
-                padding: 2.5rem 0;
-                scroll-margin-top: 60px;
-            }
-
-            .section-label {
-                font-size: .76rem;
-                letter-spacing: .26em;
-            }
-
-            h1 {
-                font-size: 2.25rem;
-            }
-
-            h2 {
-                font-size: 1.95rem;
-            }
-
-            h3 {
-                font-size: 1.55rem;
-            }
-
-            h4 {
-                font-size: 1.2rem;
-            }
-
-            .arch-divider,
-            .welcome-divider {
-                max-width: 92%;
-                margin: 1.8rem auto 2.4rem auto;
-            }
-
-            .arch-divider::before,
-            .welcome-divider::before {
-                font-size: 1.02rem;
-                padding: 0 .7rem;
-            }
-
-            .header-top-content {
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                gap: .35rem;
-            }
-
-            .grid-2,
-            .grid-3,
-            .grid-4 {
-                grid-template-columns: 1fr;
-            }
-
-            .welcome-wrap {
-                padding: 0 1.2rem;
-            }
-
-            .welcome-body p {
-                font-size: 1rem;
-                line-height: 1.82;
-            }
-
-            .welcome-body .lead::first-letter {
-                font-size: 4.8rem;
-                padding-right: .38rem;
-            }
-
-            .welcome-quote {
-                padding-left: 1.2rem;
-            }
-
-            .welcome-quote blockquote {
-                font-size: 1.08rem;
-            }
-
-            .first-visit-grid {
-                grid-template-columns: 1fr;
-                gap: 1.8rem;
-            }
-
-            .first-visit-copy {
-                max-width: 100%;
-            }
-
-            .visit-highlight-box {
-                padding: 1.35rem 1.15rem;
-            }
-
-            .first-visit-image-wrap {
-                padding-top: 0;
-            }
-
-            .first-visit-image {
-                height: 260px;
-            }
-
-            .service-info-item {
-                padding: 1.05rem .95rem;
-                gap: .85rem;
-                font-size: .98rem;
-                align-items: flex-start;
-            }
-
-            .service-times-cards {
-                grid-template-columns: 1fr;
-            }
-
-            .service-time-card,
-            .special-service-card {
-                padding: 1.45rem;
-            }
-
-            .special-services-section {
-                padding: 4.75rem 0;
-            }
-
-            .logo-main {
-                font-size: 1.7rem;
-            }
-
-            .logo-sub {
-                font-size: 0.58rem;
-                letter-spacing: 0.22em;
-            }
-
-            .footer-bottom {
-                text-align: center;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .footer-bottom {
-                flex-direction: row;
-                justify-content: space-between;
-                text-align: left;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>St Paul's Hasland - Church of England</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header id="main-header" class="at-top">
-        <div class="header-top">
-            <div class="container">
-                <div class="header-top-content">
-                    <div style="display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;">
-                        <span>St Paul's, Churchside, Hasland, S41 0JX</span>
-                        <span>TEL: 01246 850210</span>
-                    </div>
-                    <div style="display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;">
-                        <a href="https://www.sswsh.com" target="_blank" rel="noopener noreferrer">The Society</a>
-                        <a href="https://www.forwardinfaith.com" target="_blank" rel="noopener noreferrer">Forward in Faith</a>
-                    </div>
-                </div>
+  <header id="site-header" class="site-header at-top">
+    <div class="header-top">
+      <div class="container">
+        <div class="header-top-bar">
+          <div style="display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;">
+            <span>St Paul's, Churchside, Hasland, S41 0JX</span>
+            <span>Tel: 01246 850210</span>
+          </div>
+          <div style="display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;">
+            <a href="https://www.sswsh.com" target="_blank" rel="noopener noreferrer">The Society</a>
+            <a href="https://www.forwardinfaith.com" target="_blank" rel="noopener noreferrer">Forward in Faith</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="header-main">
+        <a href="#home" class="logo">
+          <div class="logo-icon">
+            <img src="images/logo.svg" alt="St Paul's Hasland" class="logo-image">
+          </div>
+          <div class="logo-text">
+            <div class="logo-main">St Paul's</div>
+            <div class="logo-sub">Worship Pray Belong</div>
+          </div>
+        </a>
+
+        <nav class="site-nav" id="desktop-nav">
+          <a href="#home" class="nav-link active">Home</a>
+          <a href="#about" class="nav-link">About Us</a>
+          <a href="#service-times" class="nav-link">Service Times</a>
+          <a href="#our-faith" class="nav-link">Our Faith</a>
+          <a href="#safeguarding" class="nav-link">Safeguarding</a>
+          <a href="#charities" class="nav-link">Charities</a>
+          <a href="#readings" class="nav-link">Readings</a>
+          <a href="#contact" class="nav-link">Contact Us</a>
+        </nav>
+
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="4" y1="6" x2="20" y2="6"></line>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="18" x2="20" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="#home">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#service-times">Service Times</a>
+      <a href="#our-faith">Our Faith</a>
+      <a href="#safeguarding">Safeguarding</a>
+      <a href="#charities">Charities</a>
+      <a href="#readings">Readings</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero" style="background-image:url('images/Landing Hero.png');">
+      <div class="hero-content fade-up visible">
+        <h1>Worship the Lord in the beauty of holiness</h1>
+        <p class="hero-subtitle">St Paul's Church, Hasland</p>
+        <div class="hero-quote">“Come and see. Come and worship. Come and belong.”</div>
+      </div>
+    </section>
+
+    <section id="about" class="bg-cream">
+      <div class="welcome-wrap">
+        <div class="fade-up">
+          <div class="welcome-intro">
+            <div class="section-label">Welcome</div>
+            <h1>Faithful, Sacramental Worship</h1>
+            <div class="arch-divider"></div>
+          </div>
+          <div class="welcome-body">
+            <p class="lead">St Paul's Hasland is a Church of England parish serving our local community with faithful, sacramental worship rooted in the Catholic tradition of Anglicanism. We are under the pastoral and sacramental care of the Bishop of Oswestry, and affiliated with the Society of Saint Wilfrid and Saint Hilda and Forward in Faith.</p>
+            <p>We serve Hasland and the surrounding area within the North East Deanery of the Diocese of Derby. Whether you are exploring faith, returning to church, or seeking a spiritual home, you are warmly welcome. Our life together is centred on prayer, the Scriptures, and the Holy Eucharist.</p>
+            <div class="welcome-quote">
+              <blockquote>“How beautiful are the feet of those who bring good news!”</blockquote>
+              <cite>— Romans 10:15</cite>
             </div>
+            <p>If you are spiritually curious, returning to faith, carrying questions, or simply longing for something deeper, you are welcome here. You do not need to have everything figured out. You can come as you are.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white">
+      <div class="container">
+        <div class="mission-header text-center fade-up">
+          <div class="section-label">Our Purpose</div>
+          <h2>Worship at the Heart of Parish Life</h2>
         </div>
 
-        <div class="container">
-            <div class="header-main">
-                <a href="#home" class="logo">
-                    <div class="logo-icon">
-                        <img src="images/logo.svg" alt="St Paul's Hasland" class="logo-image">
-                    </div>
-                    <div class="logo-text">
-                        <div class="logo-main">St Paul's</div>
-                        <div class="logo-sub">HASLAND</div>
-                    </div>
-                </a>
-
-                <nav id="desktop-nav">
-                    <a href="#home" class="nav-link active">Home</a>
-                    <a href="#about" class="nav-link">About Us</a>
-                    <a href="#service-times" class="nav-link">Service Times</a>
-                    <a href="#our-faith" class="nav-link">Our Faith</a>
-                    <a href="#safeguarding" class="nav-link">Safeguarding</a>
-                    <a href="#charities" class="nav-link">Charities</a>
-                    <a href="#readings" class="nav-link">Readings</a>
-                    <a href="#contact" class="nav-link">Contact Us</a>
-                </nav>
-
-                <button class="mobile-menu-btn" id="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Open menu">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <line x1="4" x2="20" y1="6" y2="6"></line>
-                        <line x1="4" x2="20" y1="12" y2="12"></line>
-                        <line x1="4" x2="20" y1="18" y2="18"></line>
-                    </svg>
-                </button>
+        <div class="card-grid grid-4 fade-up">
+          <article class="mission-card">
+            <div class="icon-tile">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+              </svg>
             </div>
+            <h3>Proclaim the Gospel</h3>
+            <p>Sharing the Good News of Jesus Christ through faithful preaching and teaching rooted in Scripture.</p>
+          </article>
+
+          <article class="mission-card">
+            <div class="icon-tile">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2c0 1.1.9 2 2 2h5v5c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2h-2z"></path>
+              </svg>
+            </div>
+            <h3>Celebrate the Eucharist</h3>
+            <p>Offering reverent and beautiful worship centred on the Holy Eucharist, the source and summit of our life.</p>
+          </article>
+
+          <article class="mission-card">
+            <div class="icon-tile">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+              </svg>
+            </div>
+            <h3>Serve Our Community</h3>
+            <p>Reaching out in love to our neighbours through pastoral care, charity, and practical support.</p>
+          </article>
+
+          <article class="mission-card">
+            <div class="icon-tile">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <h3>Form Disciples</h3>
+            <p>Growing together in prayer, teaching, and sacramental life as followers of Jesus Christ.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="service-times" class="overlay-section" style="background-image:url('https://d2xsxph8kpxj0f.cloudfront.net/310519663504666328/K6TVs6AiR67xuXnzkJZV9r/hero-interior-ewtoSwZcDKoLt3SAGLhRy2.webp');">
+      <div class="overlay-section-inner container">
+        <div class="service-times-intro fade-up">
+          <div class="section-label">Join Us</div>
+          <h2>Service Times</h2>
         </div>
 
-        <div class="mobile-nav" id="mobile-nav">
-            <a href="#home">Home</a>
-            <a href="#about">About Us</a>
-            <a href="#service-times">Service Times</a>
-            <a href="#our-faith">Our Faith</a>
-            <a href="#safeguarding">Safeguarding</a>
-            <a href="#charities">Charities</a>
-            <a href="#readings">Readings</a>
-            <a href="#contact">Contact Us</a>
+        <div class="service-times-grid fade-up">
+          <article class="overlay-card">
+            <div class="service-time-meta">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v6l4 2"></path></svg>
+              <h4>Sunday</h4>
+            </div>
+            <div class="service-time-name">Sung Parish Mass</div>
+            <div class="service-time-hour">10.30am</div>
+            <p>Our principal Sunday celebration with music, hymnody, and sung liturgy. Incense is used on most Sundays and feast days.</p>
+          </article>
+
+          <article class="overlay-card">
+            <div class="service-time-meta">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v6l4 2"></path></svg>
+              <h4>Wednesday</h4>
+            </div>
+            <div class="service-time-name">Low Mass</div>
+            <div class="service-time-hour">10.30am</div>
+            <p>A said celebration of the Eucharist, marked by quiet reverence and simplicity with spoken liturgy and a brief homily.</p>
+          </article>
         </div>
-    </header>
+      </div>
+    </section>
 
-    <main>
-        <section id="home" class="hero" style="background-image:url('images/Landing Hero.png');">
-            <div class="hero-content">
-                <h1>Worship the Lord in the beauty of holiness</h1>
-                <p>St Paul's Church, Hasland</p>
-                <blockquote>"Come and see. Come and worship. Come and belong."</blockquote>
-            </div>
-        </section>
-
-        <section id="about" class="bg-cream">
-            <div class="welcome-wrap">
-                <div class="fade-up">
-                    <div class="welcome-intro">
-                        <div class="section-label">Welcome</div>
-                        <h1>A Place of Stillness in a Noisy World</h1>
-                        <div class="welcome-divider"></div>
-                    </div>
-
-                    <div class="welcome-body">
-                        <p class="lead">
-                            St Paul's is a parish church at the heart of Hasland, offering a space of stillness in a noisy world and a place of depth in an often distracted culture. We are a welcoming church in Chesterfield, Derbyshire — centred on prayer, worship, and community.
-                        </p>
-
-                        <p>
-                            Here you will find worship that is reverent and prayerful, rooted in Scripture and shaped by the historic Christian faith. Our life together is centred on the Holy Eucharist — a service of Word and Sacrament that has sustained Christians for centuries.
-                        </p>
-
-                        <div class="welcome-quote">
-                            <blockquote>"How beautiful are the feet of those who bring good news!"</blockquote>
-                            <cite>— Romans 10:15</cite>
-                        </div>
-
-                        <p>
-                            If you are spiritually curious, returning to faith, carrying questions, or simply longing for something deeper, you are warmly welcome. You do not need to have everything figured out. You can come as you are.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-white">
-            <div class="container">
-                <div style="text-align:center; margin-bottom:2.5rem;" class="fade-up">
-                    <div class="section-label">Our Purpose</div>
-                    <h2>Worship at the Heart of Parish Life</h2>
-                </div>
-
-                <div class="grid grid-4 fade-up">
-                    <div class="card">
-                        <div class="card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
-                            </svg>
-                        </div>
-                        <h3>Proclaim the Gospel</h3>
-                        <p style="font-size:.875rem;">Sharing the Good News of Jesus Christ through faithful preaching and teaching rooted in Scripture.</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2c0 1.1.9 2 2 2h5v5c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2h-2z"></path>
-                            </svg>
-                        </div>
-                        <h3>Celebrate the Eucharist</h3>
-                        <p style="font-size:.875rem;">Offering reverent and beautiful worship centred on the Holy Eucharist, the source and summit of our life.</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
-                            </svg>
-                        </div>
-                        <h3>Serve Our Community</h3>
-                        <p style="font-size:.875rem;">Reaching out in love to our neighbours through pastoral care, charity, and practical support.</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="9" cy="7" r="4"></circle>
-                            </svg>
-                        </div>
-                        <h3>Form Disciples</h3>
-                        <p style="font-size:.875rem;">Growing together in prayer, teaching, and sacramental life as followers of Jesus Christ.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-white first-visit-section">
-            <div class="container first-visit-wrap">
-                <div class="first-visit-grid fade-up">
-                    <div class="first-visit-copy">
-                        <div class="section-label">Your First Visit</div>
-                        <h2>Planning Your First Visit?</h2>
-
-                        <div class="visit-highlight-box">
-                            <h3>Join us this Sunday</h3>
-                            <h2>Sung Parish Mass — 10.30am</h2>
-                            <p>
-                                A reverent service with hymns, prayer, Scripture, and Holy Communion. Arrive 10 minutes early to give yourself time to orientate, then take a seat anywhere. Service books are provided, and you can simply follow along.
-                            </p>
-                        </div>
-
-                        <p class="visit-secondary-copy">
-                            If you would like a quiet word before the service, someone will be glad to help. You are welcome to attend whether you wish to receive Holy Communion or not. Many people come simply to pray, reflect, and be present.
-                        </p>
-                    </div>
-
-                    <div class="first-visit-image-wrap">
-                        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663504666328/K6TVs6AiR67xuXnzkJZV9r/hero-interior-ewtoSwZcDKoLt3SAGLhRy2.webp" alt="Interior of St Paul's Church" class="first-visit-image">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="service-times" class="bg-cream service-times-section">
-            <div class="container service-times-wrap">
-                <div class="fade-up">
-                    <div class="section-label">For Visitors</div>
-                    <h2>What to Expect</h2>
-
-                    <div class="service-info-list">
-                        <div class="service-info-item">
-                            <span class="service-info-mark">✦</span>
-                            <span>Traditional Anglican liturgy in a catholic style</span>
-                        </div>
-                        <div class="service-info-item">
-                            <span class="service-info-mark">✦</span>
-                            <span>Vestments, candles, and ceremonial reflecting the Church's historic worship</span>
-                        </div>
-                        <div class="service-info-item">
-                            <span class="service-info-mark">✦</span>
-                            <span>A clear structure that enables both regular worshippers and visitors to participate</span>
-                        </div>
-                        <div class="service-info-item">
-                            <span class="service-info-mark">✦</span>
-                            <span>A sermon rooted in Scripture and the Church's teaching</span>
-                        </div>
-                        <div class="service-info-item">
-                            <span class="service-info-mark">✦</span>
-                            <span>Holy Communion offered to all baptised Christians</span>
-                        </div>
-                    </div>
-
-                    <p class="service-times-note">
-                        If you are new or unsure about anything during the service, simply follow those around you — or feel free to speak to a member of the welcome team beforehand.
-                    </p>
-
-                    <div class="service-times-cards">
-                        <div class="service-time-card">
-                            <div class="service-time-day">Sunday</div>
-                            <h3>Sung Parish Mass</h3>
-                            <div class="service-time-hour">10.30am</div>
-                            <p>Our principal Sunday celebration with music, hymnody, and sung liturgy. Incense is used on most Sundays and feast days.</p>
-                        </div>
-
-                        <div class="service-time-card">
-                            <div class="service-time-day">Wednesday</div>
-                            <h3>Low Mass</h3>
-                            <div class="service-time-hour">10.30am</div>
-                            <p>A said celebration of the Eucharist, marked by quiet reverence and simplicity with spoken liturgy and a brief homily.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="special-services-section">
-            <div class="special-services-overlay"></div>
-            <div class="container special-services-wrap">
-                <div class="fade-up">
-                    <div class="section-label special-label">Special Services</div>
-                    <h2>Holy Week &amp; Easter at St Paul's</h2>
-                    <p class="special-services-intro">
-                        Holy Week is the most important week in the Christian year. During these days we remember the final events of Jesus' life — from His welcome into Jerusalem, through His death on the cross, to the joy of His resurrection on Easter Day.
-                    </p>
-
-                    <div class="special-service-card">
-                        <div class="special-service-heading">
-                            <h3>Palm Sunday</h3>
-                            <span class="special-service-time">Sunday 13th April – 10.30am</span>
-                        </div>
-                        <p>
-                            Sung Mass with Blessing of Palms and Procession from the Lychgate. We begin outside the church with the blessing of palm crosses before entering in procession.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="our-faith" class="bg-cream">
-            <div class="narrow-container">
-                <div style="text-align:center;" class="fade-up">
-                    <div class="section-label">Our Faith</div>
-                    <h2>What We Believe</h2>
-                    <div class="arch-divider"></div>
-                    <p style="font-size:1.08rem; margin-bottom:1.4rem;">
-                        We believe in one God — Father, Son, and Holy Spirit — as revealed in Holy Scripture and summarised in the ancient Creeds of the Church.
-                    </p>
-                    <p style="margin-bottom:1.4rem;">
-                        As an Anglo-Catholic parish, we hold to the fullness of the Catholic faith as received by the Church of England. We believe that the Church is called to be a sign of God's kingdom on earth.
-                    </p>
-                </div>
-
-                <div class="grid grid-3 fade-up" style="margin-top:2.5rem;">
-                    <div class="card">
-                        <h3>Holy Eucharist</h3>
-                        <p style="font-size:.875rem;">The central act of Christian worship, the source and summit of our life together.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Baptism</h3>
-                        <p style="font-size:.875rem;">The sacrament of new birth, by which we are made members of Christ's Body.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Holy Scripture</h3>
-                        <p style="font-size:.875rem;">The Word of God containing all things necessary for salvation.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="safeguarding" class="bg-white">
-            <div class="narrow-container">
-                <div class="fade-up">
-                    <div style="display:flex; align-items:center; gap:1rem; margin-bottom:2rem;">
-                        <div style="width:56px; height:56px; background:var(--burgundy); border-radius:4px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="width:28px; height:28px;">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            </svg>
-                        </div>
-                        <h2 style="margin:0;">Safeguarding</h2>
-                    </div>
-
-                    <p style="font-size:1.08rem; margin-bottom:1.5rem;">
-                        Protecting children, young people and vulnerable adults is the responsibility of us all.
-                    </p>
-
-                    <div class="card">
-                        <h4 style="color:var(--burgundy); margin-bottom:.5rem;">Parish Safeguarding Officer</h4>
-                        <p style="font-weight:500; margin-bottom:.75rem;">Stephen Wright</p>
-                        <a href="tel:01246850210" style="color:var(--burgundy); text-decoration:none;">📞 01246 850210</a>
-                    </div>
-
-                    <div class="card" style="margin-top:1.5rem;">
-                        <h4 style="color:var(--burgundy); margin-bottom:.5rem;">Diocesan Safeguarding</h4>
-                        <p style="font-weight:500; margin-bottom:.5rem;">Acting Diocesan Safeguarding Adviser</p>
-                        <p style="font-weight:500; margin-bottom:.75rem;">Sue Griffin</p>
-                        <p style="margin-bottom:.75rem;">
-                            <a href="tel:01332388678" style="color:var(--burgundy); text-decoration:none;">📞 01332 388678</a>
-                        </p>
-                        <a href="https://www.derby.anglican.org/en/safeguarding.html" target="_blank" rel="noopener noreferrer" style="color:var(--burgundy); text-decoration:none; font-weight:600;">
-                            Diocese of Derby Safeguarding page
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="charities" class="bg-cream">
-            <div class="container">
-                <div style="text-align:center; margin-bottom:2.5rem;" class="fade-up">
-                    <div class="section-label">Our Giving</div>
-                    <h2>Recently Supported Charities</h2>
-                </div>
-
-                <div class="grid grid-3 fade-up">
-                    <div class="card">
-                        <h3>Saltergate Children's Home</h3>
-                        <p style="font-size:.875rem;">Supporting vulnerable children in Ethiopia with care and education.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Clay Cross Foodbank</h3>
-                        <p style="font-size:.875rem;">Providing emergency food and support to local people in crisis.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Mary's Meals</h3>
-                        <p style="font-size:.875rem;">Setting up school feeding programmes in communities where poverty is prevalent.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="readings" class="bg-white">
-            <div class="narrow-container">
-                <div style="text-align:center; margin-bottom:2rem;" class="fade-up">
-                    <div class="section-label">The Word of God</div>
-                    <h2>Readings at Mass</h2>
-                    <p id="today-date" style="font-weight:600; color:var(--burgundy); margin-top:1rem;">Loading date...</p>
-                </div>
-
-                <div class="card fade-up">
-                    <div id="readings-container">
-                        <p style="text-align:center;">Loading readings...</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="bg-cream">
-            <div class="container">
-                <div class="grid grid-2 fade-up" style="gap:3rem;">
-                    <div>
-                        <div class="section-label">Get in Touch</div>
-                        <h2>Contact Us</h2>
-
-                        <form onsubmit="handleContactForm(event)" style="display:grid; gap:1rem; margin-top:1.5rem;">
-                            <input type="text" placeholder="Your Name" required style="padding:.75rem; border:1px solid #ddd; border-radius:4px;">
-                            <input type="email" placeholder="Your Email" required style="padding:.75rem; border:1px solid #ddd; border-radius:4px;">
-                            <textarea placeholder="Your Message" required rows="5" style="padding:.75rem; border:1px solid #ddd; border-radius:4px;"></textarea>
-                            <button type="submit" class="btn">Send Message</button>
-                        </form>
-                    </div>
-
-                    <div>
-                        <div class="card">
-                            <h3>St Paul's Church</h3>
-                            <p style="margin-bottom:1rem;">📍 Churchside, Hasland, Chesterfield, S41 0JX</p>
-                            <p>📞 01246 850210</p>
-                        </div>
-
-                        <div style="margin-top:2rem; border-radius:4px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2397.5!2d-1.4085!3d53.2305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4879854b0a6c1c5d%3A0x5e2c8e3e4f6a7b8c!2sChurchside%2C%20Hasland%2C%20Chesterfield%20S41%200JX!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk" width="100%" height="250" style="border:none;" allowfullscreen="" loading="lazy"></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h3 class="footer-brand">St Paul's Hasland</h3>
-                    <p style="font-size:.875rem; color:rgba(255,255,255,.6);">
-                        A parish of the Church of England in the Diocese of Derby.
-                    </p>
-                </div>
-
-                <div>
-                    <h5>Quick Links</h5>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#service-times">Service Times</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2024 St Paul's PCC, Hasland. All rights reserved.</p>
-            </div>
+    <section class="bg-white">
+      <div class="container first-visit-grid fade-up">
+        <div>
+          <div class="section-label">Your First Visit</div>
+          <h2>Planning Your First Visit?</h2>
+          <div class="visit-highlight-box">
+            <h3>Join us this Sunday</h3>
+            <h2>Sung Parish Mass — 10.30am</h2>
+            <p>A reverent service with hymns, prayer, Scripture, and Holy Communion. Arrive 10 minutes early to give yourself time to orientate, then take a seat anywhere. Service books are provided, and you can simply follow along.</p>
+          </div>
+          <p class="visit-secondary-copy">If you would like a quiet word before the service, someone will be glad to help. You are welcome to attend whether you wish to receive Holy Communion or not. Many people come simply to pray, reflect, and be present.</p>
         </div>
-    </footer>
+        <div class="first-visit-image-wrap">
+          <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663504666328/K6TVs6AiR67xuXnzkJZV9r/hero-interior-ewtoSwZcDKoLt3SAGLhRy2.webp" alt="Interior of St Paul's Church" class="first-visit-image">
+        </div>
+      </div>
+    </section>
 
-    <script>
-        const header = document.getElementById('main-header');
+    <section class="bg-cream">
+      <div class="narrow fade-up">
+        <div class="section-label">For Visitors</div>
+        <h2>What to Expect</h2>
+        <div class="service-info-list">
+          <div class="service-info-item"><span class="service-info-mark">✦</span><span>Traditional Anglican liturgy in a catholic style</span></div>
+          <div class="service-info-item"><span class="service-info-mark">✦</span><span>Vestments, candles, and ceremonial reflecting the Church's historic worship</span></div>
+          <div class="service-info-item"><span class="service-info-mark">✦</span><span>A clear structure that enables both regular worshippers and visitors to participate</span></div>
+          <div class="service-info-item"><span class="service-info-mark">✦</span><span>A sermon rooted in Scripture and the Church's teaching</span></div>
+          <div class="service-info-item"><span class="service-info-mark">✦</span><span>Holy Communion offered to all baptised Christians</span></div>
+        </div>
+        <p>If you are new or unsure about anything during the service, simply follow those around you — or feel free to speak to a member of the welcome team beforehand.</p>
+      </div>
+    </section>
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY === 0) {
-                header.classList.add('at-top');
-                header.classList.remove('scrolled');
-            } else {
-                header.classList.remove('at-top');
-                header.classList.add('scrolled');
-            }
-        });
+    <section class="overlay-section" style="background-image:url('https://d2xsxph8kpxj0f.cloudfront.net/310519663504666328/K6TVs6AiR67xuXnzkJZV9r/hero-interior-ewtoSwZcDKoLt3SAGLhRy2.webp');">
+      <div class="overlay-section-inner container fade-up">
+        <div class="section-label" style="color: var(--gold);">Special Services</div>
+        <h2>Holy Week &amp; Easter at St Paul's</h2>
+        <p style="max-width: 980px; color: rgba(255,255,255,.82); margin-bottom: 2.25rem;">Holy Week is the most important week in the Christian year. During these days we remember the final events of Jesus' life — from His welcome into Jerusalem, through His death on the cross, to the joy of His resurrection on Easter Day.</p>
+        <div class="overlay-card" style="max-width: 920px;">
+          <div class="special-service-heading">
+            <h3>Palm Sunday</h3>
+            <span class="special-service-time">Sunday 13th April – 10.30am</span>
+          </div>
+          <p>Sung Mass with Blessing of Palms and Procession from the Lychgate. We begin outside the church with the blessing of palm crosses before entering in procession.</p>
+        </div>
+      </div>
+    </section>
 
-        function toggleMobileMenu() {
-            document.getElementById('mobile-nav').classList.toggle('open');
+    <section id="our-faith" class="bg-cream">
+      <div class="narrow fade-up text-center">
+        <div class="section-label">Our Faith</div>
+        <h2>What We Believe</h2>
+        <div class="arch-divider"></div>
+        <p style="font-size:1.08rem; margin-bottom:1.4rem;">We believe in one God — Father, Son, and Holy Spirit — as revealed in Holy Scripture and summarised in the ancient Creeds of the Church.</p>
+        <p style="margin-bottom:1.8rem;">As an Anglo-Catholic parish, we hold to the fullness of the Catholic faith as received by the Church of England. We believe that the Church is called to be a sign of God's kingdom on earth.</p>
+      </div>
+      <div class="container card-grid grid-3 fade-up" style="margin-top: 2.5rem;">
+        <article class="card"><h3>Holy Eucharist</h3><p style="font-size:.9rem;">The central act of Christian worship, the source and summit of our life together.</p></article>
+        <article class="card"><h3>Baptism</h3><p style="font-size:.9rem;">The sacrament of new birth, by which we are made members of Christ's Body.</p></article>
+        <article class="card"><h3>Holy Scripture</h3><p style="font-size:.9rem;">The Word of God containing all things necessary for salvation.</p></article>
+      </div>
+    </section>
+
+    <section id="safeguarding" class="bg-white">
+      <div class="narrow fade-up">
+        <div style="display:flex; align-items:center; gap:1rem; margin-bottom:2rem;">
+          <div style="width:56px; height:56px; background:var(--burgundy); border-radius:4px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="width:28px; height:28px;">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <h2 style="margin:0;">Safeguarding</h2>
+        </div>
+
+        <p style="font-size:1.08rem; margin-bottom:1.5rem;">Protecting children, young people and vulnerable adults is the responsibility of us all.</p>
+
+        <div class="card">
+          <h4 style="color:var(--burgundy); margin-bottom:.5rem;">Parish Safeguarding Officer</h4>
+          <p style="font-weight:500; margin-bottom:.75rem;">Stephen Wright</p>
+          <a href="tel:01246850210" style="color:var(--burgundy);">01246 850210</a>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem;">
+          <h4 style="color:var(--burgundy); margin-bottom:.5rem;">Diocesan Safeguarding</h4>
+          <p style="font-weight:500; margin-bottom:.4rem;">Acting Diocesan Safeguarding Adviser</p>
+          <p style="font-weight:500; margin-bottom:.75rem;">Sue Griffin</p>
+          <p style="margin-bottom:.75rem;"><a href="tel:01332388678" style="color:var(--burgundy);">01332 388678</a></p>
+          <a href="https://www.derby.anglican.org/en/safeguarding.html" target="_blank" rel="noopener noreferrer" style="color:var(--burgundy); font-weight:600;">Diocese of Derby Safeguarding page</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="charities" class="bg-cream">
+      <div class="container">
+        <div class="text-center fade-up" style="margin-bottom: 2.5rem;">
+          <div class="section-label">Our Giving</div>
+          <h2>Recently Supported Charities</h2>
+        </div>
+        <div class="card-grid grid-3 fade-up">
+          <article class="card"><h3>Saltergate Children's Home</h3><p style="font-size:.9rem;">Supporting vulnerable children in Ethiopia with care and education.</p></article>
+          <article class="card"><h3>Clay Cross Foodbank</h3><p style="font-size:.9rem;">Providing emergency food and support to local people in crisis.</p></article>
+          <article class="card"><h3>Mary's Meals</h3><p style="font-size:.9rem;">Setting up school feeding programmes in communities where poverty is prevalent.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="readings" class="bg-white">
+      <div class="narrow">
+        <div class="text-center fade-up" style="margin-bottom: 2rem;">
+          <div class="section-label">The Word of God</div>
+          <h2>Readings at Mass</h2>
+          <p id="today-date" style="font-weight:600; color:var(--burgundy); margin-top:1rem;">Loading date...</p>
+        </div>
+
+        <div class="card fade-up">
+          <div id="readings-container">
+            <p style="text-align:center;">Loading readings...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="bg-cream">
+      <div class="container contact-grid fade-up">
+        <div>
+          <div class="section-label">Get in Touch</div>
+          <h2>Contact Us</h2>
+          <form class="contact-form" onsubmit="handleContactForm(event)">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required rows="5"></textarea>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+        </div>
+
+        <div>
+          <div class="card">
+            <h3>St Paul's Church</h3>
+            <p style="margin-bottom:1rem;">Churchside, Hasland, Chesterfield, S41 0JX</p>
+            <p>01246 850210</p>
+          </div>
+
+          <div class="map-frame">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2397.5!2d-1.4085!3d53.2305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4879854b0a6c1c5d%3A0x5e2c8e3e4f6a7b8c!2sChurchside%2C%20Hasland%2C%20Chesterfield%20S41%200JX!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk" width="100%" height="250" style="border:none;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 class="footer-brand">St Paul's Hasland</h3>
+          <p style="font-size:.9rem; color:rgba(255,255,255,.62);">A parish of the Church of England in the Diocese of Derby.</p>
+        </div>
+
+        <div>
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#service-times">Service Times</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 St Paul's PCC, Hasland. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('site-header');
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    const navLinks = document.querySelectorAll('#desktop-nav .nav-link, #mobile-nav a');
+    const sections = document.querySelectorAll('section[id]');
+
+    function onScroll() {
+      if (window.scrollY === 0) {
+        header.classList.add('at-top');
+        header.classList.remove('scrolled');
+      } else {
+        header.classList.remove('at-top');
+        header.classList.add('scrolled');
+      }
+
+      let current = '';
+      sections.forEach(section => {
+        if (window.pageYOffset >= section.offsetTop - 150) {
+          current = section.getAttribute('id');
         }
+      });
 
-        document.querySelectorAll('.mobile-nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('mobile-nav').classList.remove('open');
-            });
-        });
-
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('#desktop-nav .nav-link, #mobile-nav a');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.pageYOffset >= sectionTop - 150) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        function handleContactForm(e) {
-            e.preventDefault();
-            alert('Thank you for your message. We will be in touch soon.');
-            e.target.reset();
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) {
+          link.classList.add('active');
         }
+      });
+    }
 
-        function loadReadings() {
-            const now = new Date();
-            document.getElementById('today-date').textContent =
-                now.toLocaleDateString('en-GB', {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                });
+    window.addEventListener('scroll', onScroll);
+    onScroll();
 
-            const readings = [
-                {
-                    title: 'First Reading',
-                    ref: 'Isaiah 50:4-9a',
-                    text: 'The Lord God has given me the tongue of a teacher...'
-                },
-                {
-                    title: 'Responsorial Psalm',
-                    ref: 'Psalm 69',
-                    text: 'It is for your sake that I have borne reproach...'
-                },
-                {
-                    title: 'Gospel',
-                    ref: 'Matthew 26:14-25',
-                    text: 'Then one of the twelve, who was called Judas Iscariot...'
-                }
-            ];
+    mobileToggle.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+    });
 
-            const container = document.getElementById('readings-container');
-            container.innerHTML = readings.map(r => `
-                <div style="margin-bottom:1.5rem; padding-bottom:1.5rem; border-bottom:1px solid #eee;">
-                    <h3 style="margin-bottom:.25rem;">${r.title}</h3>
-                    <p style="color:var(--burgundy); font-weight:600; font-size:.875rem; margin-bottom:.5rem;">${r.ref}</p>
-                    <p>${r.text}</p>
-                </div>
-            `).join('');
+    document.querySelectorAll('#mobile-nav a').forEach(link => {
+      link.addEventListener('click', () => mobileNav.classList.remove('open'));
+    });
+
+    function handleContactForm(event) {
+      event.preventDefault();
+      alert('Thank you for your message. We will be in touch soon.');
+      event.target.reset();
+    }
+
+    function loadReadings() {
+      const now = new Date();
+      document.getElementById('today-date').textContent = now.toLocaleDateString('en-GB', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+
+      const readings = [
+        { title: 'First Reading', ref: 'Isaiah 50:4-9a', text: 'The Lord God has given me the tongue of a teacher...' },
+        { title: 'Responsorial Psalm', ref: 'Psalm 69', text: 'It is for your sake that I have borne reproach...' },
+        { title: 'Gospel', ref: 'Matthew 26:14-25', text: 'Then one of the twelve, who was called Judas Iscariot...' }
+      ];
+
+      const container = document.getElementById('readings-container');
+      container.innerHTML = readings.map(reading => `
+        <div class="readings-card-entry">
+          <h3 style="margin-bottom:.25rem;">${reading.title}</h3>
+          <p style="color:var(--burgundy); font-weight:600; font-size:.88rem; margin-bottom:.45rem;">${reading.ref}</p>
+          <p>${reading.text}</p>
+        </div>
+      `).join('');
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
         }
+      });
+    }, { threshold: 0.1 });
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-        document.addEventListener('DOMContentLoaded', () => {
-            loadReadings();
-            window.dispatchEvent(new Event('scroll'));
-        });
-    </script>
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    document.addEventListener('DOMContentLoaded', loadReadings);
+  </script>
 </body>
 </html>
