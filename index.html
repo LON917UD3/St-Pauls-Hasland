@@ -17,14 +17,14 @@
         }
 
         :root {
-            --burgundy: #6B2C2C;
-            --gold: #B8860B;
-            --oak: #3D2817;
-            --cream: #F5F3F0;
-            --nave: #2C3E50;
-            --white: #FFFFFF;
-            --foreground: #3D2817;
-        }
+    --burgundy: rgb(134, 14, 36);
+    --gold: #C89A2B;
+    --oak: #4A3427;
+    --cream: #F7F4F1;
+    --nave: #2C3E50;
+    --white: #FFFFFF;
+    --foreground: #4A3427;
+}
 
         html {
             scroll-behavior: smooth;
@@ -46,104 +46,109 @@
             margin: 0 auto;
             padding: 0 1rem;
         }
-        .welcome-wrap{
-    max-width: 1020px;
+       .welcome-wrap{
+    max-width: 1120px;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 2rem;
 }
 
 .welcome-intro{
-    max-width: 1020px;
+    max-width: 980px;
     margin: 0 auto;
     text-align: center;
 }
 
 .welcome-body{
-    max-width: 980px;
+    max-width: 1040px;
     margin: 0 auto;
 }
 
 .welcome-body p{
-    font-size: 1.125rem;
-    line-height: 1.9;
-    color: rgba(61, 40, 23, 0.82);
-    margin-bottom: 2rem;
+    font-size: 1.15rem;
+    line-height: 1.95;
+    color: rgba(74,52,39,.82);
+    margin-bottom: 2.3rem;
 }
 
 .welcome-body .lead{
-    font-size: 1.18rem;
+    font-size: 1.22rem;
 }
 
 .welcome-body .lead::first-letter{
     float: left;
     font-family: "Cormorant Garamond", serif;
-    font-size: 5rem;
-    line-height: 0.82;
-    padding-right: 0.45rem;
-    padding-top: 0.2rem;
-    color: var(--burgundy);
+    font-size: 6.2rem;
+    line-height: .76;
+    padding-right: .55rem;
+    padding-top: .18rem;
+    color: rgb(123,29,39);
     font-weight: 600;
 }
 
 .welcome-quote{
-    border-left: 4px solid #C89A2B;
+    border-left: 5px solid #C89A2B;
     padding-left: 2rem;
-    margin: 2.5rem 0 2.5rem 0;
+    margin: 2.7rem 0;
 }
 
 .welcome-quote blockquote{
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 .45rem 0;
     font-family: "Cormorant Garamond", serif;
-    font-size: 1.2rem;
+    font-size: 1.34rem;
     font-style: italic;
-    color: rgba(148, 58, 74, 0.82);
-    line-height: 1.5;
+    color: rgba(123,29,39,.72);
+    line-height: 1.45;
 }
 
 .welcome-quote cite{
-    display: block;
-    font-style: normal;
-    font-size: 0.95rem;
-    color: rgba(61, 40, 23, 0.45);
+    display:block;
+    font-style:normal;
+    font-size:1rem;
+    color: rgba(74,52,39,.48);
 }
 
 .welcome-divider{
     position: relative;
     height: 1px;
-    max-width: 560px;
-    margin: 2rem auto 3rem auto;
-    background: linear-gradient(to right, transparent, #C89A2B, transparent);
+    max-width: 620px;
+    margin: 2.3rem auto 3.4rem auto;
+    background: linear-gradient(to right, transparent, #D8C7A1, transparent);
 }
 
 .welcome-divider::before{
-    content: "✠";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    content:"✠";
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
     background: var(--cream);
-    color: #C89A2B;
-    padding: 0 1rem;
-    font-size: 1rem;
+    color:#C89A2B;
+    padding:0 1rem;
+    font-size:1rem;
 }
 
-@media (max-width: 768px){
+@media (max-width:768px){
+
+    .welcome-wrap{
+        padding:0 1.2rem;
+    }
+
     .welcome-body p{
-        font-size: 1rem;
-        line-height: 1.8;
+        font-size:1rem;
+        line-height:1.85;
     }
 
     .welcome-body .lead::first-letter{
-        font-size: 4rem;
-        padding-right: 0.35rem;
+        font-size:4.8rem;
+        padding-right:.38rem;
     }
 
     .welcome-quote{
-        padding-left: 1.25rem;
+        padding-left:1.2rem;
     }
 
     .welcome-quote blockquote{
-        font-size: 1.05rem;
+        font-size:1.08rem;
     }
 }
 
@@ -811,7 +816,7 @@ transition:color .3s ease;
         <div class="fade-up">
             <div class="welcome-intro">
                 <div class="section-label">Welcome</div>
-                <h2>A Place of Stillness in a Noisy World</h2>
+                <h1>A Place of Stillness in a Noisy World</h1>
                 <div class="welcome-divider"></div>
             </div>
 
