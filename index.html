@@ -16,14 +16,13 @@
             box-sizing: border-box;
         }
 
-        :root {
+        :root{
     --burgundy: rgb(134, 14, 36);
+    --burgundy-soft: rgba(134,14,36,.08);
+    --burgundy-mid: rgba(134,14,36,.72);
     --gold: #C89A2B;
     --oak: #4A3427;
     --cream: #F7F4F1;
-    --nave: #2C3E50;
-    --white: #FFFFFF;
-    --foreground: #4A3427;
 }
 
         html {
@@ -46,7 +45,183 @@
     margin: 0 auto;
     padding: 0 1rem;
 }
+.first-visit-section{
+    padding: 5.5rem 0;
+}
 
+.first-visit-wrap{
+    max-width: 1120px;
+}
+
+.first-visit-grid{
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 520px;
+    gap: 3rem;
+    align-items: start;
+}
+
+.first-visit-copy{
+    max-width: 700px;
+}
+
+.first-visit-copy .section-label{
+    margin-bottom: 0.95rem;
+}
+
+.first-visit-title{
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2.65rem, 4.1vw, 3.9rem);
+    line-height: 1.02;
+    font-weight: 600;
+    letter-spacing: -0.028em;
+    color: var(--oak);
+    margin-bottom: 1.8rem;
+}
+
+.visit-highlight-box{
+    background: #F3EEE8;
+    padding: 2.35rem 2.45rem;
+    border-radius: 2px;
+    margin-bottom: 2rem;
+}
+
+.visit-kicker{
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.6rem;
+    line-height: 1.1;
+    color: var(--burgundy);
+    font-weight: 500;
+    margin-bottom: 0.9rem;
+}
+
+.visit-main-title{
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    line-height: 1.08;
+    color: var(--oak);
+    font-weight: 600;
+    margin-bottom: 1.1rem;
+}
+
+.visit-highlight-box p,
+.visit-secondary-copy{
+    font-size: 1.02rem;
+    line-height: 1.85;
+    color: rgba(74,52,39,.78);
+}
+
+.first-visit-image-wrap{
+    padding-top: 4.9rem;
+}
+
+.first-visit-image{
+    display: block;
+    width: 100%;
+    max-width: 520px;
+    height: 520px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 2px;
+    box-shadow: 0 10px 26px rgba(0,0,0,.12);
+}
+
+@media (max-width: 1024px){
+    .first-visit-grid{
+        grid-template-columns: 1fr 420px;
+        gap: 2.5rem;
+    }
+
+    .first-visit-image{
+        max-width: 420px;
+        height: 440px;
+    }
+}
+
+@media (max-width: 768px){
+    .first-visit-section{
+        padding: 4rem 0;
+    }
+
+    .first-visit-grid{
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .first-visit-copy{
+        max-width: 100%;
+    }
+
+    .first-visit-title{
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .visit-highlight-box{
+        padding: 1.6rem 1.4rem;
+    }
+
+    .visit-kicker{
+        font-size: 1.35rem;
+    }
+
+    .visit-main-title{
+        font-size: 1.9rem;
+    }
+
+    .first-visit-image-wrap{
+        padding-top: 0;
+    }
+
+    .first-visit-image{
+        max-width: 100%;
+        height: 320px;
+    }
+}
+@media (max-width: 980px){
+
+    .first-visit-grid{
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .first-visit-image-wrap{
+        padding-top:0;
+    }
+
+    .first-visit-image{
+        height: 420px;
+    }
+}
+
+@media (max-width: 768px){
+
+    .first-visit-section{
+        padding: 4.5rem 0;
+    }
+
+    .visit-highlight-box{
+        padding: 2rem 1.5rem;
+    }
+
+    .visit-kicker{
+        font-size: 1.65rem;
+    }
+
+    .visit-main-title{
+        font-size: 2rem;
+    }
+
+    .visit-highlight-box p,
+    .visit-secondary-copy{
+        font-size: 1rem;
+        line-height: 1.8;
+        max-width:100%;
+    }
+
+    .first-visit-image{
+        height: 320px;
+    }
+}
 .welcome-wrap{
     max-width: 1120px;
     margin: 0 auto;
@@ -452,6 +627,17 @@ transition:color .3s ease;
         /*service times*/
         .service-times-section{
     padding: 6.5rem 0 5rem;
+}
+.first-visit-copy{
+    max-width: 760px;
+}
+
+.first-visit-title{
+    font-size: clamp(3.8rem, 6.5vw, 5.6rem);
+    line-height: 1.02;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    margin-bottom: 2.4rem;
 }
 
 .service-times-wrap{
@@ -1140,32 +1326,40 @@ h4{
             </div>
         </section>
 
-        <section class="bg-white">
-            <div class="container">
-                <div class="grid grid-2 fade-up" style="gap: 3rem; align-items: center;">
-                    <div>
-                        <div class="section-label">Your First Visit</div>
-                        <h2>Planning Your First Visit?</h2>
-                        
+       <section class="bg-white first-visit-section">
+    <div class="container first-visit-wrap">
+        <div class="first-visit-grid fade-up">
+            <div class="first-visit-copy">
+                <div class="section-label">Your First Visit</div>
+                <h2 class="first-visit-title">Planning Your First Visit?</h2>
 
-                        <div style="background: #f5f3f0; padding: 2rem; border-radius: 4px; margin-bottom: 2rem;">
-                            <h1>Join us this Sunday</h1>
-                            <h3>Sung Parish Mass — 10.30am</h3>
-
-                            <p style="color: rgba(61, 40, 23, 0.7); font-size: 0.875rem;">
-                                A reverent service with hymns, prayer, Scripture, and Holy Communion. Arrive 10 minutes early to give yourself time to orientate, then take a seat anywhere. Service books are provided, and you can simply follow along.
-                            </p>
-                        </div>
-                        <p style="color: rgba(61, 40, 23, 0.7);">
-                            If you would like a quiet word before the service, someone will be glad to help. You are welcome to attend whether you wish to receive Holy Communion or not. Many people come simply to pray, reflect, and be present.
-                        </p>
-                    </div>
-                    <div>
-                        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663504666328/K6TVs6AiR67xuXnzkJZV9r/hero-interior-ewtoSwZcDKoLt3SAGLhRy2.webp" alt="Interior of St Paul's Church" style="border-radius: 4px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); width: 100%;">
-                    </div>
+                <div class="visit-highlight-box">
+                    <div class="visit-kicker">Join us this Sunday</div>
+                    <div class="visit-main-title">Sung Parish Mass — 10.30am</div>
+                    <p>
+                        A reverent service with hymns, prayer, Scripture, and Holy Communion.
+                        Arrive 10 minutes early to give yourself time to orientate, then take a seat anywhere.
+                        Service books are provided, and you can simply follow along.
+                    </p>
                 </div>
+
+                <p class="visit-secondary-copy">
+                    If you would like a quiet word before the service, someone will be glad to help.
+                    You are welcome to attend whether you wish to receive Holy Communion or not.
+                    Many people come simply to pray, reflect, and be present.
+                </p>
             </div>
-        </section>
+
+            <div class="first-visit-image-wrap">
+                <img
+                    src="https://d2xsxph8kpxj0f.cloudfront.net/310519663504666328/K6TVs6AiR67xuXnzkJZV9r/hero-interior-ewtoSwZcDKoLt3SAGLhRy2.webp"
+                    alt="Interior of St Paul's Church"
+                    class="first-visit-image"
+                >
+            </div>
+        </div>
+    </div>
+</section>
 
         <!-- SERVICE TIMES SECTION -->
        <section id="service-times" class="bg-cream service-times-section">
