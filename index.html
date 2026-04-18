@@ -449,6 +449,204 @@ transition:color .3s ease;
         }
 
         /* Main Content */
+        /*service times*/
+        .service-times-section{
+    padding: 6.5rem 0 5rem;
+}
+
+.service-times-wrap{
+    max-width: 1020px;
+}
+
+.service-times-title{
+    margin-bottom: 2rem;
+}
+
+.service-info-list{
+    display: grid;
+    gap: 1.15rem;
+    margin: 2rem 0 2.75rem;
+}
+
+.service-info-item{
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    background: #ffffff;
+    border: 1px solid rgba(74,52,39,.08);
+    box-shadow: 0 2px 8px rgba(0,0,0,.05);
+    padding: 1.45rem 1.5rem;
+    border-radius: 2px;
+    font-size: 1.08rem;
+    color: rgba(74,52,39,.86);
+}
+
+.service-info-mark{
+    color: var(--gold);
+    font-size: 0.95rem;
+    flex: 0 0 auto;
+    line-height: 1;
+}
+
+.service-times-note{
+    max-width: 920px;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: rgba(74,52,39,.82);
+    margin: 0 0 2.5rem 0;
+}
+
+.service-times-cards{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 1.5rem;
+}
+
+.service-time-card{
+    background: #fff;
+    border: 1px solid rgba(74,52,39,.08);
+    box-shadow: 0 2px 8px rgba(0,0,0,.05);
+    padding: 2rem;
+    border-radius: 2px;
+}
+
+.service-time-day{
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--burgundy);
+    font-weight: 700;
+    margin-bottom: 0.85rem;
+}
+
+.service-time-name{
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 2rem;
+    line-height: 1.05;
+    color: var(--oak);
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+}
+
+.service-time-hour{
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.55rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.service-time-card p{
+    color: rgba(74,52,39,.78);
+    line-height: 1.8;
+}
+
+.special-services-section{
+    position: relative;
+    background-image: url('https://d2xsxph8kpxj0f.cloudfront.net/310519663504666328/K6TVs6AiR67xuXnzkJZV9r/hero-interior-ewtoSwZcDKoLt3SAGLhRy2.webp');
+    background-size: cover;
+    background-position: center;
+    padding: 7rem 0;
+    overflow: hidden;
+}
+
+.special-services-overlay{
+    position: absolute;
+    inset: 0;
+    background: rgba(9,15,28,.76);
+}
+
+.special-services-wrap{
+    position: relative;
+    z-index: 1;
+    max-width: 1020px;
+}
+
+.special-label{
+    color: var(--gold);
+}
+
+.special-services-title{
+    color: #fff;
+    margin-bottom: 1.25rem;
+}
+
+.special-services-intro{
+    max-width: 980px;
+    color: rgba(255,255,255,.82);
+    font-size: 1.08rem;
+    line-height: 1.9;
+    margin-bottom: 2.5rem;
+}
+
+.special-service-card{
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.14);
+    box-shadow: 0 10px 30px rgba(0,0,0,.18);
+    backdrop-filter: blur(8px);
+    padding: 2rem;
+    border-radius: 2px;
+}
+
+.special-service-heading{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: baseline;
+    margin-bottom: 1rem;
+}
+
+.special-service-name{
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 2.05rem;
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.special-service-time{
+    color: rgba(255,255,255,.72);
+    font-size: 1.05rem;
+}
+
+.special-service-card p{
+    color: rgba(255,255,255,.82);
+    line-height: 1.85;
+}
+
+@media (max-width: 768px){
+    .service-times-section{
+        padding: 5rem 0 3.5rem;
+    }
+
+    .service-info-item{
+        padding: 1.1rem 1rem;
+        gap: .9rem;
+        font-size: 1rem;
+        align-items: flex-start;
+    }
+
+    .service-times-cards{
+        grid-template-columns: 1fr;
+    }
+
+    .service-time-card,
+    .special-service-card{
+        padding: 1.5rem;
+    }
+
+    .service-time-name,
+    .special-service-name{
+        font-size: 1.7rem;
+    }
+
+    .service-time-hour{
+        font-size: 1.35rem;
+    }
+
+    .special-services-section{
+        padding: 5rem 0;
+    }
+}
         main {
             /* No padding-top here as the hero handles its own spacing */
         }
